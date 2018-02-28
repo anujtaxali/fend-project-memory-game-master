@@ -30,6 +30,8 @@ const deck = document.getElementById('deck');
 
 deck.addEventListener('click', function(ev) {
 
+	document.getElementById("moves").textContent = (parseInt(document.getElementById("moves").textContent) + 1).toString();
+
 	if (newList.childElementCount<2) {
 		ev.preventDefault();
 			
@@ -54,11 +56,13 @@ deck.addEventListener('click', function(ev) {
  			}
 
  			if (document.getElementsByClassName("match").length > 15) {
-				alert("Great job! You finished the game!")
+				alert("Great job! You finished the game in " + document.getElementById("moves").textContent + " moves!"); 
+				document.getElementById("moves").textContent = "0";
 				const allCards = document.getElementsByClassName("card");
 				for (k=0; k<allCards.length; k++) {
 					allCards[k].classList.remove('match');
 				}
+
 
 			}
 		}
