@@ -62,6 +62,11 @@ deck.addEventListener('click', function(ev) {
 	}
 });			
 
+const restartButton = document.getElementById("restart");
+restartButton.addEventListener('click', function() {
+	location.reload();
+});
+
 
 
 /*
