@@ -11,19 +11,70 @@
  */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+// function shuffle(array) {
+//     var currentIndex = array.length, temporaryValue, randomIndex;
 
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
+//     while (currentIndex !== 0) {
+//         randomIndex = Math.floor(Math.random() * currentIndex);
+//         currentIndex -= 1;
+//         temporaryValue = array[currentIndex];
+//         array[currentIndex] = array[randomIndex];
+//         array[randomIndex] = temporaryValue;
+//     }
 
-    return array;
-}
+//     return array;
+// };
+
+const newList = document.createElement('UL');
+const deck = document.getElementById('deck');
+
+
+deck.addEventListener('click', function(ev) {
+	if (newList.childElementCount<2) {
+		ev.preventDefault();
+			
+		const card = ev.target;
+		card.classList.add('open');
+		card.classList.add('show');
+			
+		const clonedCard = card.cloneNode(true);
+		newList.appendChild(clonedCard);
+	
+		if (newList.childElementCount===2 && newList.childNodes[0].innerHTML === newList.childNodes[1].innerHTML) {
+			const openCards = document.getElementsByClassName('show', 'open');
+			for (i=0; i<openCards.length; i++) {
+				openCards[i].classList.add('match');
+			}
+			const matchedCards = document.getElementsByClassName('match');
+			for (j=0; j<matchedCards.length; j++) {
+				matchedCards[j].classList.remove('open', 'show');
+			}	
+
+		newList.removeChild(newList.childNodes[0])
+		newList.removeChild(newList.childNodes[0])
+		}
+
+
+
+		else if (newList.childElementCount===2 && newList.childNodes[0].innerHTML !== newList.childNodes[1].innerHTML) {
+			const openCards = document.getElementsByClassName('show', 'open');
+		 	setTimeout(function () {
+
+		 		openCards[0].classList.remove('open', 'show');
+		 		openCards[0].classList.remove('open', 'show');
+		 	 },500);
+
+		 	newList.removeChild(newList.childNodes[0])
+			newList.removeChild(newList.childNodes[0])
+		 	
+		}
+
+
+	}
+
+
+
+});			
 
 
 /*
