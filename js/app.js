@@ -12,6 +12,18 @@ const deck = document.getElementById('deck');
 
 deck.addEventListener('click', function(ev) {
 	document.getElementById("moves").textContent = (parseInt(document.getElementById("moves").textContent) + 1).toString();
+	
+	if (parseInt(document.getElementById("moves").textContent) === 15) {
+		const thirdStar = document.getElementById("thirdStar");
+		thirdStar.classList.replace("fa-star", "fa-star-o");
+		console.log("check");
+	}
+
+	if (parseInt(document.getElementById("moves").textContent) === 30) {
+		const secondStar = document.getElementById("secondStar");
+		secondStar.classList.replace("fa-star", "fa-star-o");
+		console.log("check2")
+	}
 
 	if (newList.childElementCount<2) {
 		ev.preventDefault();
@@ -37,7 +49,13 @@ deck.addEventListener('click', function(ev) {
  			}
 
  			if (document.getElementsByClassName("match").length > 15) {
-				alert("Great job! You finished the game in " + document.getElementById("moves").textContent + " moves!"); 
+				const emptyStars = document.getElementsByClassName("fa-star").length;
+				alert("Great job! You finished the game in " + document.getElementById("moves").textContent + " moves and" + " you got a " + emptyStars + " star rating."); 
+				
+
+
+
+
 				document.getElementById("moves").textContent = "0";
 				const allCards = document.getElementsByClassName("card");
 				for (k=0; k<allCards.length; k++) {
@@ -69,13 +87,10 @@ restartButton.addEventListener('click', function() {
 
 
 
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+
+//TO DO:
+//Stars?
+//Animations
+//Bugs
+//clean up code
+//Rest of rubric
